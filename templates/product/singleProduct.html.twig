@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <div class="container">
+        <div class="row justify-content-center mt-5 mb-5">
+            <div class="col">
+                <h1>Vous consultez le produit suivant : {{product.name}}</h1>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-6">
+                <img class="rounded" src="{{product.img}}" alt="Image de {{product.name}}">
+            </div>
+            <div class="col-6 border border-primary border-5 rounded p-3">
+                <div class="row justify-content-center">
+                    <div class="col-7">
+                        <h2>Vendu au prix de : {{product.price}} €</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{product.description}}
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-5">
+                   {{form_start(form)}}
+                        <div class="col-12">
+                            <div class="row justify-content-center">
+                                <div class="col-5">
+                                        <div class="mb-3">
+                                            {{form_widget(form.qty)}}
+                                        </div>
+                                </div>
+                                <div class="col-5">
+                                    {{form_end(form)}}
+                                </div>
+                            </div>
+                            {# <button class="btn btn-primary">Ajoutez-le au panier !</button> #}
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+            
+
+        
+        
+
+
+    </div>
+
+{% endblock %}
