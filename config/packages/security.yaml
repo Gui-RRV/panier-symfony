@@ -5,14 +5,8 @@ security:
         users_in_memory:
             memory: 
                 users:
-                    admin: {password: 'password', roles: ['ROLE_ADMIN'] }
+                    admin: {password: '$argon2id$v=19$m=65536,t=4,p=1$SDZ5UXNmNkdhdjNHM0g3aA$4sFDSrb4gKJ0gCBnRYURlZGDrzDBURJNXOFpS6uJr+o', roles: ['ROLE_ADMIN'] }
 
-        # used to reload user from session & other features (e.g. switch_user)
-        # app_user_provider:
-            # id: App\Security\UserProvider
-
-
-   
                 
     encoders:
         Symfony\Component\Security\Core\User\User: 'auto'
@@ -38,11 +32,6 @@ security:
                 # where to redirect after logout
                 target: home
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
         
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used

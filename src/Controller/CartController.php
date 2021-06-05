@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ProductsRepository;
+use App\Service\CartService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -21,10 +22,12 @@ class CartController extends AbstractController
     /**
      * @Route("/cart", name="cart")
      */
-    public function showCart(ProductsRepository $productsRepository){
+    public function showCart(ProductsRepository $productsRepository,CartService $cartService){
 
         $cart = $this->session->get('cart',[]);
         $data = [];
+
+
 
         foreach ($cart as $id => $qty) {
             $data[] = [
@@ -34,7 +37,8 @@ class CartController extends AbstractController
         }
 
         return $this->render('cart/cart.html.twig',[
-            'products' => $data
+            'products' => $data,
+            'totalPrice' => $cartService->getTotalPrice($data)
         ]);
     }
     
@@ -81,6 +85,9 @@ class CartController extends AbstractController
 
         $this->session->set('cart',$cart);
 
+        if ( empty($cart)) {
+            return $this->redirectToRoute("home");
+        }
         return $this->redirectToRoute("cart");
     }
 }
