@@ -2,37 +2,36 @@
 
 namespace App\Controller\Admin;
 
-use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
-use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use App\Entity\Products;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Controller\Admin\ProductsCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 /**
- * @IsGranted("ROLE_ADMIN")
+ * 
+ *@IsGranted("ROLE_ADMIN")
  */
 class DashboardController extends AbstractDashboardController
 {
+
+
     /**
      * @Route("/admin", name="admin")
      */
     public function index(): Response
     {
         // redirect to some CRUD controller
-        $routeBuilder = $this->get(AdminUrlGenerator::class);
+        $routeBuilder = $this->get(CrudUrlGenerator::class)->build();
 
-        return $this->redirect($routeBuilder->setController(OneOfYourCrudController::class)->generateUrl());
+        return $this->redirect($routeBuilder->setController(ProductsCrudController::class)->generateUrl());
 
-        // you can also redirect to different pages depending on the current user
-        if ('jane' === $this->getUser()->getUsername()) {
-            return $this->redirect('...');
-        }
 
-        // you can also render some template to display a proper Dashboard
-        // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
-        return $this->render('some/path/my-dashboard.html.twig');
     }
 
     public function configureDashboard(): Dashboard
@@ -44,6 +43,6 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        yield MenuItem::linkToCrud('Produits', 'fas fa-list', Products::class);
     }
 }
