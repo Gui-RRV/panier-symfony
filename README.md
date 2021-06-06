@@ -17,7 +17,7 @@ Le projet contient:
 
 Instructions:
 
-Tout d'abbors, téléchargez le projet sous format zip par exemple et ensuite décompressez le !
+Tout d'abbors, téléchargez la branche master du projet sous format zip par exemple et ensuite décompressez le !
 
 Pour installer le projet vous devez faire:
 - composer install
