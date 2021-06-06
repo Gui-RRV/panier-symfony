@@ -25,6 +25,8 @@ Pour installer le projet vous devez faire:
 - yarn install
 - yarn upgrade
 
+Tout cela permettra d'installer les dépendances requises au bon fonctionnement du projet !
+
 Maintenant que le projet est installé il faut mettre en place la base de données, utilisant sqlite pour ce projet un fichier .db est déjà présent.
 Pour Remplir ce fichier voici la marche à suivre :
 
