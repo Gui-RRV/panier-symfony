@@ -17,6 +17,8 @@ Le projet contient:
 
 Instructions:
 
+Tout d'abbors, téléchargez le projet sous format zip par exemple et ensuite décompressez le !
+
 Pour installer le projet vous devez faire:
 - composer install
 - composer update
