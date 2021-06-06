@@ -31,7 +31,7 @@ class CartController extends AbstractController
 
         foreach ($cart as $id => $qty) {
             $data[] = [
-                'product' => $productsRepository->find($id),
+                'product' => $productsRepository->getAllOrdByName($id),
                 'qty' => $qty
             ];
         }

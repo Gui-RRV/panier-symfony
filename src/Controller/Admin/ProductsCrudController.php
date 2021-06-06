@@ -15,6 +15,8 @@ class ProductsCrudController extends AbstractCrudController
         return Products::class;
     }
 
+
+
     
     public function configureFields(string $pageName): iterable
     {
@@ -23,6 +25,8 @@ class ProductsCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             NumberField::new('price'),
             TextField::new('slug'),
+            TextField::new('img','inserez le lien d\'une image !'),
+           
         ];
     }
     

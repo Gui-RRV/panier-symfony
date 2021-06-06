@@ -9,7 +9,7 @@
                         <img src="{{ product.img }}" class="card-img-top" alt="image de {{ product.name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text">{{ product.description | raw}}</p>
                             <a href="{{path('singleProduct', {'slug':product.slug})}}" class="btn btn-primary">Voir la fiche du produit</a>
                         </div>
                     </div>
