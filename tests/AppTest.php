@@ -5,39 +5,43 @@ namespace App\Tests;
 use App\Entity\Products;
 use App\Service\CartService;
 use Monolog\Test\TestCase;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class AppTest extends TestCase{
+class AppTest extends KernelTestCase{
 
-    
+    private $cartService;
 
-    // public function testTotalPrice(){
+    public function testTotalPrice(){
 
-    //     $this->
-    //     $cartService = $this->getMockClass('CartService');
+        self::bootKernel();
+        $container = self::$kernel->getContainer();
+        $container = self::$container;
 
-    //     $testTotalPrice = 0;
+        $this->cartService = self::$container->get('app.cartService');
 
-    //     for ($i=0; $i <= mt_rand(0,12) ; $i++) { 
-    //         $newProduct = new Products();
+        $testTotalPrice = 0;
 
-    //         $newProduct->setPrice(mt_rand(0,1000));
+        for ($i=0; $i <= mt_rand(0,12) ; $i++) { 
+            $newProduct = new Products();
 
-    //         $testCart[]= [
-    //             'product' => $newProduct,
-    //             'qty' => mt_rand(0,50)
-    //         ];
-    //     }
+            $newProduct->setPrice(mt_rand(0,1000));
 
-    //     foreach ($testCart as $testProduct) {
-    //         $price = $testProduct['product']->getPrice();
+            $testCart[]= [
+                'product' => $newProduct,
+                'qty' => mt_rand(0,50)
+            ];
+        }
 
-    //         $testTotalPrice += $testProduct['qty'] * $price ;
+        foreach ($testCart as $testProduct) {
+            $price = $testProduct['product']->getPrice();
 
-    //     }
+            $testTotalPrice += $testProduct['qty'] * $price ;
+
+        }
 
 
-    //     $this->assertEquals($testTotalPrice,$cartService->getTotalPrice($testCart));
+        $this->assertEquals($testTotalPrice,$this->cartService->getTotalPrice($testCart));
 
-    //}
+    }
 
 }

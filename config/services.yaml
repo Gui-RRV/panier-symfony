@@ -21,6 +21,14 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
+    App\Service\CartService:
+        # redundant thanks to _defaults, but value is overridable on each service
+        public: false
+
+    app.cartService:
+        alias: App\Service\CartService
+        public: true
+
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Controller\:
