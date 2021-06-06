@@ -1,7 +1,7 @@
 # panier-symfony
 
 Mini projet de panier sur Symfony qui m'a été proposé dans le cadre d'une recherche d'alternance et qui par la même occasion permet de mettre à jour
-mon ancien mini projet de panier en php legacy ;)
+mon ancien mini projet de panier en php procédural ;)
 
 Le projet contient:
 
